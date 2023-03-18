@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -673,6 +673,71 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 412986980129061870, guid: 0e8dc95c91fc73544be53ffd19f45082, type: 3}
   m_PrefabInstance: {fileID: 861066343}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &417336652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417336655}
+  - component: {fileID: 417336654}
+  - component: {fileID: 417336653}
+  m_Layer: 0
+  m_Name: LevelGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &417336653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417336652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526e61b2c583023428a61ae2cd526d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &417336654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417336652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb98865ba1f5ed4ea795a9c011aa15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellSize: 100
+  gridSize: 8
+  hubRoom: {fileID: 3389657526572739293, guid: fb24a6b5fbffe964399fc4011cfc438d, type: 3}
+  standardRooms:
+  - {fileID: 2906334617212602974, guid: 95b81ad11d5a0af4487384fec7b9c370, type: 3}
+  - {fileID: 2643902182676862440, guid: d2fa2a013b9140c40b5ddb891d9736f0, type: 3}
+  - {fileID: 6626837308311842295, guid: 5befeb94fc8e17e4abad601a4cc3eb1b, type: 3}
+  roomSpawnChance: 44
+--- !u!4 &417336655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417336652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &486890353 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 412986980129061875, guid: 0e8dc95c91fc73544be53ffd19f45082, type: 3}
@@ -2316,6 +2381,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2832166785239021660, guid: 04808f3ee65bbe246bc9a0c2a8736dcc, type: 3}
+      propertyPath: m_Height
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2832166785239021661, guid: 04808f3ee65bbe246bc9a0c2a8736dcc, type: 3}
       propertyPath: dashSpeed
       value: 500
@@ -2332,6 +2401,10 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1694198427}
+    - target: {fileID: 2832166785239021661, guid: 04808f3ee65bbe246bc9a0c2a8736dcc, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 2832166786206189210, guid: 04808f3ee65bbe246bc9a0c2a8736dcc, type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.75
@@ -2501,6 +2574,10 @@ PrefabInstance:
     - target: {fileID: 3498572733449818374, guid: f309b28f8d9ac094db59e1a130789ccc, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498572733449818374, guid: f309b28f8d9ac094db59e1a130789ccc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f309b28f8d9ac094db59e1a130789ccc, type: 3}

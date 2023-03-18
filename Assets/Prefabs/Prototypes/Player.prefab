@@ -48,7 +48,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 3
+  m_Height: 1
   m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a776aefa4b7ce246a1b3475557c80a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 0}
   characterController: {fileID: 2832166785239021660}
   speed: 11
   jumpHeight: 2
@@ -74,6 +75,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  dashLength: 0
+  dashSpeed: 0
+  dashCharge: 0
 --- !u!114 &2832166785239021634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +114,7 @@ MonoBehaviour:
   pushForce: 150
   pullSpeed: 750
   playerInput: {fileID: 2832166785239021632}
+  highlight: {fileID: 0}
   currentFocus: {fileID: 0}
   ispickupFocus: 0
   handPosition: {fileID: 2832166786206189210}
@@ -182,6 +187,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9203cab5-9b23-41a9-911b-19be245e186f
     m_ActionName: GroundMovement/Push[/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bc1b5da3-a6e7-4d25-9acc-862be98179e8
+    m_ActionName: GroundMovement/Pause[/XInputControllerWindows/start,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d1210c01-3584-4749-9e36-cf69b1a3659c
+    m_ActionName: GroundMovement/Dash[/XInputControllerWindows/buttonEast,/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GroundMovement
