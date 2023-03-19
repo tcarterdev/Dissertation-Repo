@@ -722,7 +722,12 @@ MonoBehaviour:
   - {fileID: 2906334617212602974, guid: 95b81ad11d5a0af4487384fec7b9c370, type: 3}
   - {fileID: 2643902182676862440, guid: d2fa2a013b9140c40b5ddb891d9736f0, type: 3}
   - {fileID: 6626837308311842295, guid: 5befeb94fc8e17e4abad601a4cc3eb1b, type: 3}
+  bossRoom: {fileID: 8764635065036560807, guid: 07f2d0650d259764aa40fff367f08bac, type: 3}
+  chestRoomPrefabs:
+  - {fileID: 7708273519751963577, guid: 7940c7560c89e0247a41c8bdf19aa01e, type: 3}
   roomSpawnChance: 44
+  minChestRooms: 1
+  maxChestRooms: 3
 --- !u!4 &417336655
 Transform:
   m_ObjectHideFlags: 0
