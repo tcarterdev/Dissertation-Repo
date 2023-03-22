@@ -17,6 +17,8 @@ public class LevelGrid : MonoBehaviour
 
     [Header("Doors and Hallways")]
     public List<Door> doors;
+    [SerializeField] private LayerMask doorLayer;
+    [SerializeField] private float maxNeighborDistance;
 
     [Header("Generator Settings")]
     [Range(0, 100)] public int roomSpawnChance;
@@ -27,21 +29,18 @@ public class LevelGrid : MonoBehaviour
     {
         GridSetUp();
         GenerateRoomMap();
+        RemoveNullDoors();
         GenerateHallwayMap();
+        
+
+
     }
     private Room RoomSpawn(GameObject room, Vector2Int posInGrid)
     {
         Debug.Log(posInGrid);
-        Room newRoom = Instantiate(room).GetComponent<Room>();
+        Room newRoom = Instantiate(room, this.transform, true).GetComponent<Room>();
         Vector3 roomWorldPos = new Vector3(posInGrid.x * cellSize, 0f, posInGrid.y * cellSize);
         newRoom.transform.position = roomWorldPos;
-
-        //Add Doors to List
-        foreach (Transform door in newRoom.doors)
-        {
-            doors.Add(door.GetComponent<Door>());
-        }
-
         return newRoom;
     }
     private void GridSetUp()
@@ -130,6 +129,7 @@ public class LevelGrid : MonoBehaviour
         {
             for (int y = 0; y < roomGrid.GetLength(1); y++)
             {
+               
                 if (roomGrid[x, y] == null)
                 {
                     continue;
@@ -158,9 +158,31 @@ public class LevelGrid : MonoBehaviour
                     Destroy(roomGrid[x, y].doors[0].gameObject);
                 }
 
+                //Add Doors to List
+                foreach (Transform door in roomGrid[x, y].doors)
+                {
+                    if (door != null)
+                    {
+                        doors.Add(door.GetComponent<Door>());
+
+                    }
+
+                    
+                }
+
             }
         }
 
 
+    }
+
+    public void RemoveNullDoors()
+    {
+        foreach (Door door in doors)
+        {
+            Debug.Log("1");
+            door.CheckForNeighbor(doorLayer, maxNeighborDistance);
+
+        }
     }
 }

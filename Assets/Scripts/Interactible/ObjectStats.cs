@@ -6,6 +6,7 @@ public class ObjectStats : MonoBehaviour
 {
     [SerializeField] int objectHealth;
     [SerializeField] int objectSelfImpact;
+    [SerializeField] int objectBreakForce;
     public GameObject lightGameObject;
     public GameObject mediumGameObject;
     public GameObject heavyGameObject;
@@ -14,8 +15,11 @@ public class ObjectStats : MonoBehaviour
 
     void Start()
     {
-
+        //Set Object Health
         objectSelfImpact = 20;
+
+        //set object force when broken
+        objectBreakForce = 20;
 
         if (this.gameObject.tag == "Light")
         {
@@ -34,23 +38,8 @@ public class ObjectStats : MonoBehaviour
 
     void Update()
     {
-        if (objectHealth < 0 && this.gameObject.tag == "Light")
-        { 
-            Destroy(gameObject);
+        
 
-        }
-
-        if (objectHealth < 0 && this.gameObject.tag == "Medium")
-        {
-            Instantiate(lightGameObject);
-            Destroy(gameObject);
-        }
-
-        if (objectHealth < 0 && this.gameObject.tag == "Heavy")
-        {
-            Instantiate(mediumGameObject);
-            Destroy(gameObject);
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -58,6 +47,31 @@ public class ObjectStats : MonoBehaviour
         if (collision != null && collision.gameObject.tag == "Wall")
         {
             objectHealth -= objectSelfImpact;
+
+            if (objectHealth <= 0)
+            {
+                ObjectBreak();
+                Destroy(this.gameObject);
+            }
         }
+    }
+
+    private void ObjectBreak()
+    {
+        if (tag == "Medium")
+        { 
+           Rigidbody rb = Instantiate(lightGameObject, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(Vector3.up * objectBreakForce, ForceMode.Impulse);
+        }
+
+
+
+
+        if (tag == "Heavy")
+        {
+            Rigidbody rb = Instantiate(mediumGameObject, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(Vector3.up * objectBreakForce, ForceMode.Impulse);
+        }
+
     }
 }

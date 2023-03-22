@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,11 @@ public class PauseMenu : MonoBehaviour
     public PlayerInput playerInput;
     public bool isPaused;
 
-   
+    [Header("Inventory")]
+    public Animation[] inventoryAnimations;
+    public Animator anim;
+    public bool isInventory;
+
     public void Update()
     {
         if (playerInput.actions["Pause"].WasPressedThisFrame())
@@ -18,12 +23,27 @@ public class PauseMenu : MonoBehaviour
             if (!isPaused)
             {
                 Pause();
-                
+
             }
             else
             {
                 Resume();
-                
+
+            }
+
+        }
+
+        if (playerInput.actions["Inventory"].WasPressedThisFrame())
+        {
+            
+            if (!isInventory)
+            {
+
+                Inventory();
+            }
+            else
+            {
+                InventoryAway();
             }
 
         }
@@ -53,7 +73,23 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void OptionsMM()
-    { 
-    
+    {
+
     }
+
+    public void Inventory()
+    {
+        anim.SetBool("isInven", true);
+        isInventory = true;
+
+
+    }
+
+    public void InventoryAway()
+    {
+        
+        anim.SetBool("isInven", false);
+        isInventory = false;
+    }
+  
 }

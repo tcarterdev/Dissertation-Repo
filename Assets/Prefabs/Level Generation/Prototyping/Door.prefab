@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8514296832194505461}
   - component: {fileID: 6933669153995301163}
   - component: {fileID: -7211799958792927925}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,9 +29,10 @@ Transform:
   m_GameObject: {fileID: 2593110478132389537}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.836851, y: 4.2348094, z: 4.8629994}
-  m_LocalScale: {x: 5.6737, y: 8.469619, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8540701581773624495}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -110,3 +111,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ab7f07afa89244bb9d3f8f5bc31d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorRayPoint: {fileID: 8540701581773624495}
+  neighboringDoorPosition: {fileID: 0}
+--- !u!1 &4821498940302710287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8540701581773624495}
+  m_Layer: 0
+  m_Name: Door RayPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8540701581773624495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4821498940302710287}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.787}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3465642958029212950}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

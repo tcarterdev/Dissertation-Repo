@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using UnityEditor;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.HID;
+using UnityEngine.EventSystems;
 
 public class PickupController : MonoBehaviour
 {
@@ -13,7 +15,9 @@ public class PickupController : MonoBehaviour
     [SerializeField] public float pushForce;
     [SerializeField] public float pullSpeed;
     [SerializeField] PlayerInput playerInput;
+    [SerializeField] GenerateUpgrade generateUpgrade;
 
+    
     public Highlight highlight;
     public Transform currentFocus;
 
@@ -47,20 +51,26 @@ public class PickupController : MonoBehaviour
             
         }
 
-        
+
 
 
     }
+
 
     private void Update()
     {
         PickUpHandler();
+
     }
 
 
 
-    private void PickUpHandler()
+    public void PickUpHandler()
     {
+        RaycastHit ray;
+        Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out ray, interactionDistance, interactible);
+
+
         if (playerInput.actions["Pull"].WasPressedThisFrame())
         {
             if (currentFocus == null)
@@ -77,11 +87,18 @@ public class PickupController : MonoBehaviour
 
         if (playerInput.actions["Pull"].WasReleasedThisFrame())
         {
-            Drop(); 
+            Drop();
         }
-        
 
-      
+        // If Chest is in range, generate upgrade
+        if (playerInput.actions["Interact"].WasPerformedThisFrame() && ray.collider.gameObject.tag == "Chest")
+        { 
+
+            generateUpgrade.PickUpgrade();
+
+        }
+
+
 
     }
 

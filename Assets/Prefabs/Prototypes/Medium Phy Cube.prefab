@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4853441088525765416}
   - component: {fileID: 6781268971156622925}
   - component: {fileID: 4853441088525765421}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Medium Phy Cube
   m_TagString: Medium
   m_Icon: {fileID: 0}
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectHealth: 0
   objectSelfImpact: 0
+  objectBreakForce: 0
   lightGameObject: {fileID: 1135795372239075739, guid: 0562d59bfb4bc744080e856dbff04721, type: 3}
   mediumGameObject: {fileID: 4853441088525765431}
   heavyGameObject: {fileID: 6790142418860401769, guid: b5147189feb6f714fa9d6e2ef852c0d7, type: 3}

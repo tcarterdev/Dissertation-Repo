@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1135795372239075716}
   - component: {fileID: 1333678022236175585}
   - component: {fileID: 754386642952904921}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Light Phy Cube
   m_TagString: Light
   m_Icon: {fileID: 0}
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectHealth: 0
   objectSelfImpact: 0
+  objectBreakForce: 0
   lightGameObject: {fileID: 1135795372239075739}
   mediumGameObject: {fileID: 4853441088525765431, guid: 1fb358b8fae249942b3ebd6d4859f5d3, type: 3}
   heavyGameObject: {fileID: 6790142418860401769, guid: b5147189feb6f714fa9d6e2ef852c0d7, type: 3}
