@@ -2129,7 +2129,7 @@ MonoBehaviour:
   maxPlayerHealth: 100
   currentChiPoints: 0
   maxChiPoints: 100
-  currentUpgrades: []
+  abilities: []
   playerHealthText: {fileID: 754594373}
   chiPointsText: {fileID: 1233350505}
   dashChargesText: {fileID: 1276407692}
@@ -2170,9 +2170,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeCards:
-  - {fileID: 11400000, guid: 120341643ec273047a692e4d5c5c97f8, type: 2}
-  - {fileID: 11400000, guid: fc50858835f259a42a721fc0a8c639a0, type: 2}
-  - {fileID: 11400000, guid: bc482d8a2f5e5ca44959e0873ed122d7, type: 2}
+  - {fileID: 11400000, guid: e9e0e108f882c4244b131e1eeae189b5, type: 2}
+  - {fileID: 11400000, guid: 5a66ec4c6f501834cb5f0cb9e05ddc92, type: 2}
+  - {fileID: 11400000, guid: a1665464ba95e4b44a48eea8fc7ce81e, type: 2}
+  - {fileID: 11400000, guid: 84708924eab15084a9f2f0d94567aee2, type: 2}
+  - {fileID: 11400000, guid: dd27220820b6236489ea76a019c7a104, type: 2}
+  - {fileID: 11400000, guid: 8f6e91554d57eed47813b3cf69440d61, type: 2}
 --- !u!1 &1861222384
 GameObject:
   m_ObjectHideFlags: 0

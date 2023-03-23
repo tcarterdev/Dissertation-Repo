@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Upgrade2
   m_EditorClassIdentifier: 
   cardName: 
-  cardType: 
+  cardType: 0
   cardDescription: 
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 21300000, guid: f19920538ae74994b82bd2a51ae082e7, type: 3}
   statModifier: 0
-  playerStats: {fileID: 0}
