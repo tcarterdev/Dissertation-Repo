@@ -29,15 +29,15 @@ public class LevelGrid : MonoBehaviour
     {
         GridSetUp();
         GenerateRoomMap();
-        RemoveNullDoors();
-        GenerateHallwayMap();
-        
+        //GenerateHallwayMap();
+       RemoveNullDoors();
+
 
 
     }
     private Room RoomSpawn(GameObject room, Vector2Int posInGrid)
     {
-        Debug.Log(posInGrid);
+        
         Room newRoom = Instantiate(room, this.transform, true).GetComponent<Room>();
         Vector3 roomWorldPos = new Vector3(posInGrid.x * cellSize, 0f, posInGrid.y * cellSize);
         newRoom.transform.position = roomWorldPos;
@@ -83,8 +83,20 @@ public class LevelGrid : MonoBehaviour
                         Room newroom = RoomSpawn(roomToSpawn, new Vector2Int(x, y));
                         roomGrid[x,y] = newroom;
                     }
+                    //Add Doors to List
+                    foreach (Transform door in roomGrid[x, y].doors)
+                    {
+                        if (door != null)
+                        {
+                            doors.Add(door.GetComponent<Door>());
+
+                        }
+
+
+                    }
 
                 }
+                
             }
 
         }
@@ -158,17 +170,7 @@ public class LevelGrid : MonoBehaviour
                     Destroy(roomGrid[x, y].doors[0].gameObject);
                 }
 
-                //Add Doors to List
-                foreach (Transform door in roomGrid[x, y].doors)
-                {
-                    if (door != null)
-                    {
-                        doors.Add(door.GetComponent<Door>());
-
-                    }
-
-                    
-                }
+                
 
             }
         }
@@ -176,13 +178,17 @@ public class LevelGrid : MonoBehaviour
 
     }
 
-    public void RemoveNullDoors()
+    private void RemoveNullDoors()
     {
+    
+
         foreach (Door door in doors)
         {
-            Debug.Log("1");
+            
             door.CheckForNeighbor(doorLayer, maxNeighborDistance);
 
         }
     }
+
+ 
 }

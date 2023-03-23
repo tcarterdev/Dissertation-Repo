@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6e7dc34c70ce664ea9545a5328e6c3c, type: 3}
-  m_Name: TestCard1
+  m_Script: {fileID: 11500000, guid: 60b40117c17020f4c91960611dcf6108, type: 3}
+  m_Name: Upgrade6
   m_EditorClassIdentifier: 
-  cardName: Test1
+  cardName: 
   cardType: 
   cardDescription: 
   cardImage: {fileID: 0}
+  statModifier: 0
+  playerStats: {fileID: 0}

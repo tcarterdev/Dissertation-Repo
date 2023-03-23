@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     public Animation[] inventoryAnimations;
     public Animator anim;
     public bool isInventory;
+    public GameObject inventoryObj;
 
     public void Update()
     {
@@ -79,17 +80,18 @@ public class PauseMenu : MonoBehaviour
 
     public void Inventory()
     {
-        anim.SetBool("isInven", true);
         isInventory = true;
-
+        anim.SetBool("isInven", true);
+        
+        
 
     }
 
     public void InventoryAway()
     {
-        
-        anim.SetBool("isInven", false);
         isInventory = false;
+        anim.SetBool("isInven", false);
+        
     }
   
 }

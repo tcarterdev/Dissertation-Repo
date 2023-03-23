@@ -93,9 +93,11 @@ public class PickupController : MonoBehaviour
         // If Chest is in range, generate upgrade
         if (playerInput.actions["Interact"].WasPerformedThisFrame() && ray.collider.gameObject.tag == "Chest")
         { 
+            AbilityCard newAbility = generateUpgrade.PickUpgrade();
+            
+            PlayerStats.Instance.AddNewAbilityToInv(newAbility);
 
-            generateUpgrade.PickUpgrade();
-
+            generateUpgrade.RemoveUpgrade(newAbility);
         }
 
 
@@ -145,7 +147,6 @@ public class PickupController : MonoBehaviour
         { return; }
         ispickupFocus = false;
         currentFocus.GetComponent<Rigidbody>().useGravity = true;
-        
         currentFocus.transform.parent = null;
     }
 
