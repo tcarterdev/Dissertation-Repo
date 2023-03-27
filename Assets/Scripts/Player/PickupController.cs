@@ -45,10 +45,16 @@ public class PickupController : MonoBehaviour
             highlight.ToggleHighlight(true);
         }
 
+        
+
         if (ispickupFocus == true)
         {
             MoveFocus();
-            
+
+        }
+        else
+        {
+            return;
         }
 
 
@@ -98,6 +104,8 @@ public class PickupController : MonoBehaviour
             PlayerStats.Instance.AddNewAbilityToInv(newAbility);
 
             generateUpgrade.RemoveUpgrade(newAbility);
+
+            Destroy(ray.collider.gameObject);
         }
 
 

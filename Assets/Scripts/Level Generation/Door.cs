@@ -5,20 +5,24 @@ public class Door : MonoBehaviour
 {
 
     public Transform doorRayPoint;
-    public Transform neighboringDoorPosition;
+    public Transform neighborDoor;
+    private bool initialize = false;
+
     public void CheckForNeighbor(LayerMask doorLayer, float maxNeighborDistance)
     {
+        initialize = true;
         RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(doorRayPoint.position, doorRayPoint.TransformDirection(Vector3.forward), out hit, 85, 7))
-        {
-            Debug.DrawRay(doorRayPoint.position, doorRayPoint.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Did Hit");
-        }
-    }
 
-    public void FixedUpdate()
-    {
-        
+        Vector3 thisPos = doorRayPoint.position;
+        if (Physics.Raycast(thisPos, doorRayPoint.forward, out hit, maxNeighborDistance))
+        {
+            //Debug.DrawLine(thisPos, hit.point, Color.red, 100f);
+            neighborDoor = hit.collider.transform.parent;
+        }
+        else
+        {
+            //Debug.DrawLine(doorRayPoint.position, doorRayPoint.forward * maxNeighborDistance, Color.yellow, 100f);
+            Destroy(this.gameObject);
+        }
     }
 }

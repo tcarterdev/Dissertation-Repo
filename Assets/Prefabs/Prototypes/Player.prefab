@@ -14,9 +14,12 @@ GameObject:
   - component: {fileID: 2832166785239021634}
   - component: {fileID: 2832166785239021633}
   - component: {fileID: 2832166785239021632}
+  - component: {fileID: 1694198433}
+  - component: {fileID: 1694198427}
+  - component: {fileID: 1694198441}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +51,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1
+  m_Height: 3
   m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -67,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a776aefa4b7ce246a1b3475557c80a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 0}
+  playerStats: {fileID: 1694198427}
   characterController: {fileID: 2832166785239021660}
   speed: 11
   jumpHeight: 2
@@ -75,9 +78,9 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  dashLength: 0
-  dashSpeed: 0
-  dashCharge: 0
+  dashLength: 150
+  dashSpeed: 500
+  dashCharge: 3
 --- !u!114 &2832166785239021634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,8 +95,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 2832166785239021632}
   cam: {fileID: 2832166785411363840}
-  xSensitivity: 120
-  ySensitivity: 120
+  xSensitivity: 180
+  ySensitivity: 180
 --- !u!114 &2832166785239021633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,13 +110,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPromptText: {fileID: 0}
-  interactionDistance: 5
+  interactionDistance: 25
   interactible:
     serializedVersion: 2
-    m_Bits: 128
-  pushForce: 150
-  pullSpeed: 750
+    m_Bits: 256
+  pushForce: 50
+  pullSpeed: 1000
   playerInput: {fileID: 2832166785239021632}
+  generateUpgrade: {fileID: 1694198441}
   highlight: {fileID: 0}
   currentFocus: {fileID: 0}
   ispickupFocus: 0
@@ -194,12 +198,81 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: d1210c01-3584-4749-9e36-cf69b1a3659c
-    m_ActionName: GroundMovement/Dash[/XInputControllerWindows/buttonEast,/Keyboard/leftShift]
+    m_ActionName: GroundMovement/Dash[/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d676896c-695a-4c34-865d-a868deb0f959
+    m_ActionName: GroundMovement/Interact[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9755c7a9-5337-49a3-bbec-2fdaa5cdf43f
+    m_ActionName: GroundMovement/Inventory[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 99506730-3d7a-400d-ae97-a8792fe58e3f
+    m_ActionName: GroundMovement/Ability1[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 95e6182d-0ad5-4c7e-8abe-bb24f38b7043
+    m_ActionName: GroundMovement/Ability2[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GroundMovement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 2832166785411363840}
+--- !u!65 &1694198433
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2832166785239021656}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1694198427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2832166785239021656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3726c89ededd79478c18c960e1eb9a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 2832166785239021661}
+  currentPlayerHealth: 0
+  maxPlayerHealth: 100
+  currentChiPoints: 0
+  maxChiPoints: 100
+  abilities: []
+  playerHealthText: {fileID: 0}
+  chiPointsText: {fileID: 0}
+  dashChargesText: {fileID: 0}
+--- !u!114 &1694198441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2832166785239021656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7dd43b86eeff2348bbfb38d8d1cf854, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeCards:
+  - {fileID: 11400000, guid: e9e0e108f882c4244b131e1eeae189b5, type: 2}
+  - {fileID: 11400000, guid: 5a66ec4c6f501834cb5f0cb9e05ddc92, type: 2}
+  - {fileID: 11400000, guid: a1665464ba95e4b44a48eea8fc7ce81e, type: 2}
+  - {fileID: 11400000, guid: 84708924eab15084a9f2f0d94567aee2, type: 2}
+  - {fileID: 11400000, guid: dd27220820b6236489ea76a019c7a104, type: 2}
+  - {fileID: 11400000, guid: 8f6e91554d57eed47813b3cf69440d61, type: 2}
 --- !u!1 &2832166785411363842
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cfuStatus: PSXEffects v1.18.4 - version ahead?!
   sections: 01010100
-  customRes: {x: 595, y: 321}
+  customRes: {x: 960, y: 540}
   resolutionFactor: 2
   limitFramerate: -1
   skipFrames: 0
@@ -355,7 +428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2832166786206189211}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.5}
+  m_LocalPosition: {x: 0, y: 0, z: 2.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

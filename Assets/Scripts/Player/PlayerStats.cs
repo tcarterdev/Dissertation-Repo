@@ -4,10 +4,13 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditorInternal;
+using JetBrains.Annotations;
+using System;
 
 public class PlayerStats : MonoBehaviour
 {
     public Movement movement;
+  
 
     [Header("Player Statistics")]
     public int currentPlayerHealth;
@@ -45,6 +48,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
+        
+
         currentPlayerHealth = maxPlayerHealth;
         currentChiPoints = maxChiPoints;
 
@@ -66,16 +71,12 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void PlayerInventory()
-    {
-        
-    }
-
     public void AddNewAbilityToInv(AbilityCard newAbility)
-    { 
-        abilities.Add(newAbility);
-        
-       
+    {
+
+        abilities.Add(newAbility);  
+          
+
     }
 
     //PLAYER ACTIVE ABILITIES

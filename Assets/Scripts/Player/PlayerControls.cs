@@ -107,6 +107,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability1"",
+                    ""type"": ""Button"",
+                    ""id"": ""99506730-3d7a-400d-ae97-a8792fe58e3f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability2"",
+                    ""type"": ""Button"",
+                    ""id"": ""95e6182d-0ad5-4c7e-8abe-bb24f38b7043"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -322,7 +340,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4e33506c-a421-4e1d-acea-727d871f53e1"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -351,6 +369,50 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d57b2dd-e63a-43ab-8569-43521eab4f88"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6040c06a-29f9-4763-8959-0263ae672301"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0783f191-e4e5-4704-b117-a956d934abd3"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""210e19f7-6e16-42e7-90dc-9668ac2f24c6"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -368,6 +430,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_GroundMovement_Dash = m_GroundMovement.FindAction("Dash", throwIfNotFound: true);
         m_GroundMovement_Interact = m_GroundMovement.FindAction("Interact", throwIfNotFound: true);
         m_GroundMovement_Inventory = m_GroundMovement.FindAction("Inventory", throwIfNotFound: true);
+        m_GroundMovement_Ability1 = m_GroundMovement.FindAction("Ability1", throwIfNotFound: true);
+        m_GroundMovement_Ability2 = m_GroundMovement.FindAction("Ability2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -436,6 +500,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_GroundMovement_Dash;
     private readonly InputAction m_GroundMovement_Interact;
     private readonly InputAction m_GroundMovement_Inventory;
+    private readonly InputAction m_GroundMovement_Ability1;
+    private readonly InputAction m_GroundMovement_Ability2;
     public struct GroundMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -449,6 +515,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_GroundMovement_Dash;
         public InputAction @Interact => m_Wrapper.m_GroundMovement_Interact;
         public InputAction @Inventory => m_Wrapper.m_GroundMovement_Inventory;
+        public InputAction @Ability1 => m_Wrapper.m_GroundMovement_Ability1;
+        public InputAction @Ability2 => m_Wrapper.m_GroundMovement_Ability2;
         public InputActionMap Get() { return m_Wrapper.m_GroundMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -485,6 +553,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Inventory.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnInventory;
                 @Inventory.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnInventory;
                 @Inventory.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnInventory;
+                @Ability1.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnAbility1;
+                @Ability1.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnAbility1;
+                @Ability1.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnAbility1;
+                @Ability2.started -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnAbility2;
+                @Ability2.performed -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnAbility2;
+                @Ability2.canceled -= m_Wrapper.m_GroundMovementActionsCallbackInterface.OnAbility2;
             }
             m_Wrapper.m_GroundMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -516,6 +590,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Inventory.started += instance.OnInventory;
                 @Inventory.performed += instance.OnInventory;
                 @Inventory.canceled += instance.OnInventory;
+                @Ability1.started += instance.OnAbility1;
+                @Ability1.performed += instance.OnAbility1;
+                @Ability1.canceled += instance.OnAbility1;
+                @Ability2.started += instance.OnAbility2;
+                @Ability2.performed += instance.OnAbility2;
+                @Ability2.canceled += instance.OnAbility2;
             }
         }
     }
@@ -531,5 +611,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnAbility1(InputAction.CallbackContext context);
+        void OnAbility2(InputAction.CallbackContext context);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,5 +46,10 @@ public class Highlight : MonoBehaviour
                 material.DisableKeyword("_EMISSION");
             }
         }
+    }
+
+    internal bool ToggleHighlight()
+    {
+        throw new NotImplementedException();
     }
 }
