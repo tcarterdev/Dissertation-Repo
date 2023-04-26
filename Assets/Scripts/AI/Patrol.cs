@@ -17,6 +17,10 @@ public class Patrol : MonoBehaviour
    private bool _waiting = false;
     NavMeshAgent _agent;
 
+  
+    
+
+
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -44,8 +48,10 @@ public class Patrol : MonoBehaviour
         }
         else
         {
-        
-        _agent.SetDestination(currentWaypoint.position);
+            
+            _agent.SetDestination(currentWaypoint.position);
+
+          
         }
 
 
@@ -54,7 +60,7 @@ public class Patrol : MonoBehaviour
 
     IEnumerator WaitCoroutine(float waitTime)
     {
-
+        
         yield return new WaitForSeconds(waitTime);
         SetNewWaypoint();
 

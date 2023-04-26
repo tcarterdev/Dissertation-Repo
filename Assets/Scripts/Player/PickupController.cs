@@ -9,6 +9,10 @@ using UnityEngine.EventSystems;
 
 public class PickupController : MonoBehaviour
 {
+    [Header("Particle References")]
+    [SerializeField] GameObject pullParticle;
+    [SerializeField] GameObject pushParticle;
+
     [SerializeField] TMP_Text interactionPromptText;
     [SerializeField] float interactionDistance;
     [SerializeField] LayerMask interactible;
@@ -16,8 +20,6 @@ public class PickupController : MonoBehaviour
     [SerializeField] public float pullSpeed;
     [SerializeField] PlayerInput playerInput;
     [SerializeField] GenerateUpgrade generateUpgrade;
-
-    
     public Highlight highlight;
     public Transform currentFocus;
 
@@ -25,10 +27,17 @@ public class PickupController : MonoBehaviour
 
     public Transform handPosition;
 
+    [Header("UI References")]
+    public GameObject LookingAtDoorUI;
+    
+    
+
     private void FixedUpdate()
     {
         RaycastHit hit;
         Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, interactionDistance, interactible);
+
+        
 
         if (hit.collider == null && ispickupFocus != true)
         {
@@ -36,6 +45,8 @@ public class PickupController : MonoBehaviour
             currentFocus = null;
             ispickupFocus = false;
             highlight.ToggleHighlight(false);
+
+            
         }
         else
         {
@@ -43,6 +54,10 @@ public class PickupController : MonoBehaviour
             interactionPromptText.SetText(currentFocus.gameObject.name);
             highlight = currentFocus.GetComponent<Highlight>();
             highlight.ToggleHighlight(true);
+
+            
+
+
         }
 
         
@@ -57,6 +72,11 @@ public class PickupController : MonoBehaviour
             return;
         }
 
+        if (hit.collider.tag == "Door" && playerInput.actions["Interact"].WasPressedThisFrame())
+        {
+            Destroy(hit.collider.gameObject);
+            Debug.Log(hit.collider.gameObject);
+        }
 
 
 
@@ -79,9 +99,11 @@ public class PickupController : MonoBehaviour
 
         if (playerInput.actions["Pull"].WasPressedThisFrame())
         {
+            pullParticle.SetActive(true);
             if (currentFocus == null)
             {
                 return;
+                
             }
             else
             {
@@ -93,6 +115,7 @@ public class PickupController : MonoBehaviour
 
         if (playerInput.actions["Pull"].WasReleasedThisFrame())
         {
+            pullParticle.SetActive(false);
             Drop();
         }
 
@@ -106,6 +129,18 @@ public class PickupController : MonoBehaviour
             generateUpgrade.RemoveUpgrade(newAbility);
 
             Destroy(ray.collider.gameObject);
+        }
+
+        if (playerInput.actions["Interact"].WasPerformedThisFrame() && ray.collider.gameObject.tag == "Door")
+        {
+            Debug.Log("is hitting door");
+            Destroy(ray.collider.gameObject);
+        }
+
+        if (playerInput.actions["Interact"].WasPerformedThisFrame() && ray.collider.gameObject.tag == "BossShrine")
+        {
+            Destroy(ray.collider.gameObject);
+            //SPAWN THREE ENEMIES
         }
 
 
@@ -134,6 +169,9 @@ public class PickupController : MonoBehaviour
 
     public void PushObject()
     {
+  
+       pushParticle.SetActive(true);
+
         if (currentFocus == null)
         {
             return;
@@ -142,9 +180,9 @@ public class PickupController : MonoBehaviour
         Rigidbody focusRB = currentFocus.GetComponent<Rigidbody>();
         Drop();
         focusRB.AddForce(Camera.main.transform.forward * pushForce, ForceMode.Impulse);
-        
 
 
+        pushParticle.SetActive(false);
 
 
     }
@@ -156,6 +194,7 @@ public class PickupController : MonoBehaviour
         ispickupFocus = false;
         currentFocus.GetComponent<Rigidbody>().useGravity = true;
         currentFocus.transform.parent = null;
+        
     }
 
 }

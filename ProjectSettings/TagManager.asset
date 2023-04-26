@@ -12,6 +12,9 @@ TagManager:
   - Heavy
   - Light
   - Chest
+  - Door
+  - Enemy
+  - BossShrine
   layers:
   - Default
   - TransparentFX

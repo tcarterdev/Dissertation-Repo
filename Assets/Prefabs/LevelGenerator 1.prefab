@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2778355651699437301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2778355651699437302}
+  - component: {fileID: 2778355651699437291}
+  - component: {fileID: 2778355651699437288}
+  - component: {fileID: 2778355651699437289}
+  m_Layer: 0
+  m_Name: LevelGenerator 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2778355651699437302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778355651699437301}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2778355651699437291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778355651699437301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eae5b3be5b2973498f161e566a2f5df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomSeed: 1
+  seed: 0
+--- !u!114 &2778355651699437288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778355651699437301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb98865ba1f5ed4ea795a9c011aa15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellSize: 75
+  gridSize: 6
+--- !u!114 &2778355651699437289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2778355651699437301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd620750c7ca3a4294619e9eac671d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomSpawnChance: 75
+  minChestRooms: 1
+  maxChestRooms: 3
+  hubRoomPrefabs: {fileID: 4066325170555269551, guid: 873b19b8f43c15f4aaebbeb3614fe4ea, type: 3}
+  standardRoomsPrefabs:
+  - {fileID: 6790815223274623073, guid: f28105d916ad46049ad0ea49aff98899, type: 3}
+  - {fileID: 6790815223274623073, guid: f6afe3db9f5935b4091697f079b9914f, type: 3}
+  - {fileID: 6790815223274623073, guid: 059f6380c86a78d4b821cf91213df1af, type: 3}
+  bossRoomPrefabs: {fileID: 2074189698438090757, guid: 8d7e9ebab34879e49828bf275a541722, type: 3}
+  chestRoomPrefabs:
+  - {fileID: 6790815223274623073, guid: c44f60f59def3c3499351b07d8e94cd0, type: 3}
+  - {fileID: 6790815223274623073, guid: 641996d892cde2a4d9685d6b578627f1, type: 3}
+  - {fileID: 6790815223274623073, guid: 301b04e3c418c124f9c62737e8fa4c4c, type: 3}
+  hallwayPrefab: {fileID: 2607156756375041342, guid: e76fa97d3c299b242837bc569d72ce74, type: 3}
+  maxHallWayRange: 95
+  doorsLayer:
+    serializedVersion: 2
+    m_Bits: 128

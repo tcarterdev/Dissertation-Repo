@@ -12,6 +12,9 @@ public class EnemyBrain : MonoBehaviour
     [SerializeField] private float _awarenessRadius = 20f;
     public EnemyStates currentState;
 
+    public Animator ninjaAnim;
+
+
     private void Start()
     {
         patrol = GetComponent<Patrol>();
@@ -25,15 +28,28 @@ public class EnemyBrain : MonoBehaviour
         //Perform Current State
         if (currentState == EnemyStates.patrolling)
         {
+            ninjaAnim.SetBool("isPatrolling", true);
+            ninjaAnim.SetBool("isChasing", false);
+            ninjaAnim.SetBool("isAttacking", false);
             patrol.PerformPatrol();
         }
         else if (currentState == EnemyStates.chasing)
         {
+            ninjaAnim.SetBool("isPatrolling", false);
+            ninjaAnim.SetBool("isChasing", true);
+            ninjaAnim.SetBool("isAttacking", false);
             chase.PerformChase();
         }
         else if (currentState == EnemyStates.attacking)
-        { 
+        {
+            ninjaAnim.SetBool("isAttacking", true);
+            ninjaAnim.SetBool("isPatrolling", false);
+            ninjaAnim.SetBool("isChasing", false);
             attack.CanAttack();
+            
+            
+
+
         }
 
        
