@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5241798932207646298}
   - component: {fileID: 8519944269757588836}
   - component: {fileID: 425232118567517275}
-  - component: {fileID: 5728990159247038243}
   - component: {fileID: 3211854657284416942}
   - component: {fileID: 3457224976237970749}
+  - component: {fileID: 3528038074878511624}
   m_Layer: 8
   m_Name: Enemy Projectile
   m_TagString: Untagged
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4832337864255658685}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -4088717540261643849, guid: c1b5db94adca91443b52813771c7a302, type: 3}
 --- !u!23 &425232118567517275
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -86,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5728990159247038243
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4832337864255658685}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3211854657284416942
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,3 +115,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 2
+--- !u!65 &3528038074878511624
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4832337864255658685}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3078792, y: 0.04752351, z: 2.3078792}
+  m_Center: {x: 1.2394081, y: 0.023761755, z: 1.1844047}

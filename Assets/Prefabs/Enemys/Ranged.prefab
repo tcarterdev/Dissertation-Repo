@@ -2114,6 +2114,8 @@ GameObject:
   - component: {fileID: 8731625167795140547}
   - component: {fileID: 8731625167795140558}
   - component: {fileID: 8731625167795140552}
+  - component: {fileID: 810056222002594314}
+  - component: {fileID: 5552627600631528796}
   m_Layer: 0
   m_Name: Ranged
   m_TagString: Enemy
@@ -2229,9 +2231,39 @@ MonoBehaviour:
   iscoolingDown: 0
   cooldownDuration: 1
   attackType: 1
+  playerStats: {fileID: 0}
+  meleeParticle: {fileID: 0}
+  meleeHitBox: {fileID: 0}
   projectilePrefab: {fileID: 4832337864255658685, guid: a455592ffc87c23498e9d9a9be9789c2, type: 3}
   projectileForce: 25
   projectilesSpawnPoint: {fileID: 8731625166821284134}
+--- !u!114 &810056222002594314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8731625167795140545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7019fb5a67d3b1748a60c222014fd56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 0
+  enemyMaxHealth: 100
+--- !u!65 &5552627600631528796
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8731625167795140545}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.963448, z: 1}
+  m_Center: {x: 0, y: 0.48172402, z: 0}
 --- !u!1 &8877673110509975967
 GameObject:
   m_ObjectHideFlags: 0

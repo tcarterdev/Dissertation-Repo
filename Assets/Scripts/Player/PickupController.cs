@@ -27,8 +27,12 @@ public class PickupController : MonoBehaviour
 
     public Transform handPosition;
 
+    [Header("Sound")]
+    public AudioSource DoorOpen;
+
     [Header("UI References")]
     public GameObject LookingAtDoorUI;
+    public GameObject WinScreen;
     
     
 
@@ -74,8 +78,18 @@ public class PickupController : MonoBehaviour
 
         if (hit.collider.tag == "Door" && playerInput.actions["Interact"].WasPressedThisFrame())
         {
+            DoorOpen.Play();
             Destroy(hit.collider.gameObject);
             Debug.Log(hit.collider.gameObject);
+        }
+
+        if (hit.collider.tag == "BossShrine" && playerInput.actions["Interact"].WasPressedThisFrame())
+        {
+            Destroy(hit.collider.gameObject);
+            Time.timeScale = 1;
+            WinScreen.SetActive(true);
+            
+
         }
 
 
@@ -134,6 +148,7 @@ public class PickupController : MonoBehaviour
         if (playerInput.actions["Interact"].WasPerformedThisFrame() && ray.collider.gameObject.tag == "Door")
         {
             Debug.Log("is hitting door");
+
             Destroy(ray.collider.gameObject);
         }
 

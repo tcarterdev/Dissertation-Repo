@@ -2093,7 +2093,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8731625166821284135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.17}
+  m_LocalPosition: {x: -0.159, y: 0.83, z: 1.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2111,9 +2111,11 @@ GameObject:
   - component: {fileID: 8731625167795140544}
   - component: {fileID: 8731625167795140559}
   - component: {fileID: 8731625167795140553}
+  - component: {fileID: 5074985062415800999}
   - component: {fileID: 8731625167795140547}
   - component: {fileID: 8731625167795140558}
   - component: {fileID: 8731625167795140552}
+  - component: {fileID: 4200271021630757938}
   m_Layer: 0
   m_Name: Melee
   m_TagString: Enemy
@@ -2129,7 +2131,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8731625167795140545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.01, y: 11.831934, z: -2.761818}
+  m_LocalPosition: {x: 23.887074, y: 10.401934, z: 2.2381816}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2175,6 +2177,20 @@ MonoBehaviour:
   _awarenessRadius: 20
   currentState: 0
   ninjaAnim: {fileID: 2902116386272839240}
+--- !u!114 &5074985062415800999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8731625167795140545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7019fb5a67d3b1748a60c222014fd56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 0
+  enemyMaxHealth: 30
 --- !u!114 &8731625167795140547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2229,9 +2245,25 @@ MonoBehaviour:
   iscoolingDown: 0
   cooldownDuration: 1
   attackType: 1
+  playerStats: {fileID: 0}
+  meleeParticle: {fileID: 0}
+  meleeHitBox: {fileID: 0}
   projectilePrefab: {fileID: 4832337864255658685, guid: a455592ffc87c23498e9d9a9be9789c2, type: 3}
   projectileForce: 25
   projectilesSpawnPoint: {fileID: 8731625166821284134}
+--- !u!65 &4200271021630757938
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8731625167795140545}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.8805919, z: 1}
+  m_Center: {x: 0, y: 0.44029593, z: 0}
 --- !u!1 &8877673110509975967
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,8 @@ public class Attack : MonoBehaviour
     public PlayerStats playerStats;
     [Header("Melee Attack")]
     public GameObject meleeParticle;
-    public int meleeAttackDamage;
+    public Transform attackpoint;
+    private int meleeDamage = 20;
     [Header("Ranged Attack")]
     public GameObject projectilePrefab;
     public float projectileForce;
@@ -59,7 +60,18 @@ public class Attack : MonoBehaviour
 
     }
 
+    public void Melee()
+    {
+       
+    }
+
     IEnumerator AttackCoolDown(float cooldownDuration)
+    {
+        iscoolingDown = true;
+        yield return new WaitForSeconds(cooldownDuration);
+        iscoolingDown = false;
+    }
+    IEnumerator MeleeAttackCoolDown(float cooldownDuration)
     {
         iscoolingDown = true;
         yield return new WaitForSeconds(cooldownDuration);
