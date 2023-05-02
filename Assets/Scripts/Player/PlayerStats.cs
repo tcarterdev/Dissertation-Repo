@@ -30,6 +30,9 @@ public class PlayerStats : MonoBehaviour
     public TMP_Text chiPointsText;
 
     public TMP_Text dashChargesText;
+    public GameObject LossScreen;
+
+    [SerializeField] AudioSource playerHurt;
 
     private static PlayerStats _instance;
     public static PlayerStats Instance { get { return _instance; } }
@@ -64,7 +67,7 @@ public class PlayerStats : MonoBehaviour
     {
         currentPlayerHealth -= damageAmount;
         playerHealthText.SetText("Health: " + currentPlayerHealth);
-
+        playerHurt.Play();
         if (currentPlayerHealth <= 0)
         {
             Destroy(this.gameObject);
@@ -77,6 +80,15 @@ public class PlayerStats : MonoBehaviour
         abilities.Add(newAbility);  
           
 
+    }
+
+    public void Update()
+    {
+        if (currentPlayerHealth <= 0)
+        {
+            Destroy(this.gameObject);
+            LossScreen.SetActive(true);
+        }
     }
 
     //PLAYER ACTIVE ABILITIES

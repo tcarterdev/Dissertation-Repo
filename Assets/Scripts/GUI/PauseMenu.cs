@@ -24,12 +24,15 @@ public class PauseMenu : MonoBehaviour
             if (!isPaused)
             {
                 Pause();
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
 
             }
             else
             {
                 Resume();
-
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
 
         }

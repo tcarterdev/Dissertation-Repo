@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     Vector2 horizontalInput;
     [SerializeField] float jumpHeight = 3.5f;
     bool jump;
+    [SerializeField] public AudioSource jumpSFX;
 
     [SerializeField] float gravity = -30f;
     Vector3 verticalVelocity = Vector3.zero;
@@ -25,6 +26,7 @@ public class Movement : MonoBehaviour
     [SerializeField] float dashLength;
     [SerializeField] float dashSpeed;
     [SerializeField] public int dashCharge = 3;
+    [SerializeField] public AudioSource dashSFX;
 
 
     private void Start()
@@ -52,6 +54,8 @@ public class Movement : MonoBehaviour
         {
             if (isGrounded)
             {
+                //insert Jump SFX
+                jumpSFX.Play();
                 verticalVelocity.y = Mathf.Sqrt(-2f * jumpHeight * gravity);
             }
             jump = false;
@@ -93,6 +97,8 @@ public class Movement : MonoBehaviour
         characterController.Move(horizontalVelocity * Time.deltaTime * dashSpeed);
         dashCharge = Mathf.Clamp(dashCharge, 0, 3);
         dashCharge -= 1;
+        //insert Dash Sound Effect
+        dashSFX.Play();
         if (dashCharge <= 0)
         {
             StartCoroutine(DashCooldown());

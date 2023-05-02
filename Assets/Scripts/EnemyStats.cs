@@ -9,6 +9,7 @@ public class EnemyStats : MonoBehaviour
     public int enemyMaxHealth = 100;
     private ObjectStats objstats;
 
+    public AudioSource deathsound;
     // Start is called before the first frame update
 
     private void Awake()
@@ -26,7 +27,9 @@ public class EnemyStats : MonoBehaviour
     {
         if (enemyHealth <= 0)
         {
+            deathsound.Play();
             Destroy(this.gameObject);
+            
         }
 
     }

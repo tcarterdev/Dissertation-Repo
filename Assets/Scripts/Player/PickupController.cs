@@ -83,14 +83,7 @@ public class PickupController : MonoBehaviour
             Debug.Log(hit.collider.gameObject);
         }
 
-        if (hit.collider.tag == "BossShrine" && playerInput.actions["Interact"].WasPressedThisFrame())
-        {
-            Destroy(hit.collider.gameObject);
-            Time.timeScale = 1;
-            WinScreen.SetActive(true);
-            
-
-        }
+       
 
 
 
@@ -147,8 +140,8 @@ public class PickupController : MonoBehaviour
 
         if (playerInput.actions["Interact"].WasPerformedThisFrame() && ray.collider.gameObject.tag == "Door")
         {
-            Debug.Log("is hitting door");
 
+            DoorOpen.Play();
             Destroy(ray.collider.gameObject);
         }
 
@@ -156,6 +149,8 @@ public class PickupController : MonoBehaviour
         {
             Destroy(ray.collider.gameObject);
             //SPAWN THREE ENEMIES
+            Time.timeScale = 0;
+            WinScreen.SetActive(true);
         }
 
 
