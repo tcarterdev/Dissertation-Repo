@@ -11,20 +11,24 @@ public class GenerationSeed : MonoBehaviour
 
     [SerializeField] TMP_Text seedUI;
 
-    
 
+    public void Start()
+    {
+        seedUI.SetText(seed.ToString());
+    }
     public void GenerateRandomSeed()
     {
         if (randomSeed) 
         {
             seed = Random.Range(-100000, 100000);
-            seedUI.SetText("Seed: " + seed);
+            
 
         }
         
     }
 
     public void SetSeed(int seed) {
-        Random.InitState(seed); 
+        Random.InitState(seed);
+        
     }
 }

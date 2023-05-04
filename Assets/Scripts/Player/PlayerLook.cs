@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class PlayerLook : MonoBehaviour
 {
     public PlayerInput playerInput;
@@ -10,6 +11,20 @@ public class PlayerLook : MonoBehaviour
 
     public float xSensitivity = 30f;
     public float ySensitivity = 30f;
+
+    [Header("Options Menu References")]
+    public Slider lookx;
+    public Slider looky;
+
+    public void ChangeLookX()
+    {
+        xSensitivity = lookx.value;
+    }
+
+    public void ChangeLookY()
+    {
+        ySensitivity = looky.value;
+    }
 
     public void LateUpdate()
     {

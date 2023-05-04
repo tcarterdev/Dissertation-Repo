@@ -99,7 +99,7 @@ public class Movement : MonoBehaviour
         dashCharge -= 1;
         //insert Dash Sound Effect
         dashSFX.Play();
-        if (dashCharge <= 0)
+        if (dashCharge <= 1)
         {
             StartCoroutine(DashCooldown());
         }
